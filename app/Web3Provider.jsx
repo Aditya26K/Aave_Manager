@@ -1,16 +1,15 @@
 "use client";
 import { WagmiProvider, createConfig, http } from "wagmi";
-import { localhost, mainnet } from "wagmi/chains";
+import {  mainnet } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
 const config = createConfig(
   getDefaultConfig({
     // Your dApps chains
-    chains: [localhost, mainnet],
+    chains: [ mainnet],
     transports: {
       // RPC URL for each chain
-      [localhost.id]: http("http://localhost:8545"),
       [mainnet.id]: http(mainnet.rpcUrls[0]),
     },
 
